@@ -15,11 +15,21 @@ $(document).ready(function(){
 var randomNumber;
 var difference;
 var clickCount = 0;
+
   // Generate random number when page loads 	
 
 window.onload = function newGame(){
  		randomNumberCalculation(); 
    };	
+
+// Prevent the enter key from being used 
+
+     $("#userGuess").keypress(function(e){
+  				if (e.which == 13 ) {
+  				e.preventDefault();
+  			};
+
+ 		 })
 
 // Generate random number when new game is pressed
 
