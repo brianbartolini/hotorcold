@@ -17,90 +17,66 @@ var difference;
 var clickCount = 0;
 
   // Generate random number when page loads 	
-
-window.onload = function newGame(){
+	window.onload = function newGame(){
  		randomNumberCalculation(); 
    };	
-
 // Prevent the enter key from being used 
-
      $("#userGuess").keypress(function(e){
   				if (e.which == 13 ) {
   				e.preventDefault();
   			};
 
  		 })
-
-// Generate random number when new game is pressed
-
-  $(".new").click(function(){
-  		reset();
-  		randomNumberCalculation();
+	// Generate random number when new game is pressed
+ 		 $(".new").click(function(){
+  			reset();
+  			randomNumberCalculation();
   	// $("#feedback").replaceWith("<h2>Make your Guess!</h2>");
   		
-  });
+  		});
 
-  // User inputs guess and difference between random number and guess is calculated.
+  		// User inputs guess and difference between random number and guess is calculated.
 
-  $(document).on('click', "#guessButton", function(){		
-  		
-
+  	$(document).on('click', "#guessButton", function(){		
   		input = document.getElementById("userGuess").value;
   		inputNum = parseInt(input, 10);
-  		
-  		if (inputNum > 100 || input == "") {
+   		if (inputNum > 100 || input == "") {
   			alert("please type a number between 0 and 100")
-  		
-  		}
-
+   		}
   		else{
-
 		difference = Math.abs(randomNumber-inputNum);
 
-
 		// Add guess to list and click count;
-
   		$("#guessList").append("<li>" + input + "</li>");
-
     	clickCount += 1;
 		$("#count").replaceWith("<span id='count'>" + clickCount + "</span>");
 
- // If guess is greater than 50 from random number then alert ice cold.
-	
-
+ 			// If guess is greater than 50 from random number then alert ice cold.
 			if (difference > 50) {
 				$("#feedback").replaceWith("<h2 id='feedback'>Ice-Cold</h2>");
 			}
-
- // If between 30-50 alert cold
-	
+		 	// If between 30-50 alert cold
 			else if (difference > 30) {
 				$("#feedback").replaceWith("<h2 id='feedback'>Cold</h2>");
 			}
-
-// If between 20 and 30, warm
-
+			// If between 20 and 30, warm
 			else if (difference > 20) {
 				$("#feedback").replaceWith("<h2 id='feedback'>Warm</h2>");
 			}
-
-// if between 10 and 20, hot
-
+			// if between 10 and 20, hot
 			else if (difference > 10) {
 				$("#feedback").replaceWith("<h2 id='feedback'>Hot</h2>");
 			}
-
 			else if (difference > 0) {
 				$("#feedback").replaceWith("<h2 id='feedback'>Very Hot</h2>");
 			}
-// If between 1 and 10 very hot
-	
+			// If between 1 and 10 very hot
 			else {
 				$("#feedback").replaceWith("<h2 id='feedback'>Correct</h2>");
 			}
-}
+		}
 
-}); 
+	}); 
 
 // Reset the screen when new game is clicked.
 
