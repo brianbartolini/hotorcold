@@ -21,12 +21,12 @@ var clickCount = 0;
  		randomNumberCalculation(); 
    };	
 // Prevent the enter key from being used 
-     $("#userGuess").keypress(function(e){
-  				if (e.which == 13 ) {
-  				e.preventDefault();
-  			};
+    //  $("#userGuess").keypress(function(e){
+  		// 		if (e.which == 13 ) {
+  		// 			e.preventDefault();
+  		// 		};
 
- 		 })
+ 		 // })
 	// Generate random number when new game is pressed
  		 $(".new").click(function(){
   			reset();
@@ -37,8 +37,10 @@ var clickCount = 0;
 
   		// User inputs guess and difference between random number and guess is calculated.
 
-  	$(document).on('click', "#guessButton", function(){		
+  	$('form').submit(function(){
   		input = document.getElementById("userGuess").value;
+  		$('#userGuess').val('');
+
   		inputNum = parseInt(input, 10);
    		if (inputNum > 100 || input == "") {
   			alert("please type a number between 0 and 100")
@@ -76,7 +78,8 @@ var clickCount = 0;
 			}
 		}
 
-	}); 
+		return false;
+  	});
 
 // Reset the screen when new game is clicked.
 
@@ -92,7 +95,7 @@ var reset = function(){
 
 var randomNumberCalculation = function(){
 	randomNumber= Math.floor(Math.random() * 101);
-	}
+}
 
 
 });
